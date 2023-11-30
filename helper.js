@@ -17,7 +17,7 @@ const getAndValidateInput = (p, person) => {
     return input
 }
 
-const checkIfWin = (person) => {
+const checkIfWon = (person) => {
     for (const combo of winningCombinations)
         if (JSON.stringify(person) === JSON.stringify([...new Set(person.concat(combo))])) return true;
     return false
@@ -32,7 +32,7 @@ const personTurn = (p, person, choices, count) => {
     choices[input - 1] = p === 1 ? '✅' : '❌'
 
     displayBoard(choices)
-    if (checkIfWin(person[p - 1])) {
+    if (checkIfWon(person[p - 1])) {
         gameRunning = false
         console.log(`Person ${p} is the winner`);
     }
